@@ -191,5 +191,79 @@ namespace EDDemo.Estructuras_No_Lineales
         {
 
         }
+
+        private void txtArbol_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnEliminarArbol_Click(object sender, EventArgs e)
+        {
+            miRaiz = miArbol.RegresaRaiz();
+            miArbol.EliminarArbol(ref miRaiz);
+            txtArbol.Text = "";
+            lblRecorridoPreOrden.Text = "";
+            lblRecorridoInOrden.Text = "";
+            lblRecorridoPostOrden.Text = "";
+            MessageBox.Show("El árbol ha sido eliminado");
+        }
+        private void btnEliminarPredecesor_Click(object sender, EventArgs e)
+        {
+            int valor = int.Parse(txtDato.Text);
+            miArbol.EliminarPredecesor(miArbol.RegresaRaiz(), valor);
+            miArbol.strArbol = "";
+            miArbol.MuestraArbolAcostado(1, miRaiz);
+            txtArbol.Text = miArbol.strArbol;
+        }
+        private void btnEliminarSucesor_Click(object sender, EventArgs e)
+        {
+            int valor = int.Parse(txtDato.Text);
+            miArbol.EliminarSucesor(miArbol.RegresaRaiz(), valor);
+            miArbol.strArbol = "";
+            miArbol.MuestraArbolAcostado(1, miRaiz);
+            txtArbol.Text = miArbol.strArbol;
+        }
+        private void btnRecorridoPorNiveles_Click(object sender, EventArgs e)
+        {
+            miRaiz = miArbol.RegresaRaiz();
+            miArbol.strRecorrido = "";
+            if (miRaiz == null)
+            {
+                lblRecorridoPreOrden.Text = "El árbol está vacío";
+                return;
+            }
+            miArbol.RecorridoPorNiveles(miRaiz);
+            lblRecorridoPreOrden.Text = miArbol.strRecorrido;
+        }
+        private void btnAltura_Click(object sender, EventArgs e)
+        {
+            miRaiz = miArbol.RegresaRaiz();
+            int altura = miArbol.Altura(miRaiz);
+            MessageBox.Show($"La altura del árbol es {altura}");
+        }
+        private void btnCantidadHojas_Click(object sender, EventArgs e)
+        {
+            miRaiz = miArbol.RegresaRaiz();
+            int hojas = miArbol.CantidadHojas(miRaiz);
+            MessageBox.Show($"La cantidad de hojas es {hojas}");
+        }
+        private void btnCantidadNodos_Click(object sender, EventArgs e)
+        {
+            miRaiz = miArbol.RegresaRaiz();
+            int nodos = miArbol.CantidadNodos(miRaiz);
+            MessageBox.Show($"La cantidad de nodos es {nodos}");
+        }
+        private void btnEsCompleto_Click(object sender, EventArgs e)
+        {
+            miRaiz = miArbol.RegresaRaiz();
+            bool esCompleto = miArbol.EsCompleto(miRaiz);
+            MessageBox.Show(esCompleto ? "El árbol es completo" : "El árbol no es completo");
+        }
+        private void btnEsLleno_Click(object sender, EventArgs e)
+        {
+            miRaiz = miArbol.RegresaRaiz();
+            bool esLleno = miArbol.EsLleno(miRaiz);
+            MessageBox.Show(esLleno ? "El árbol es lleno" : "El árbol no es lleno");
+        }
     }
 }
