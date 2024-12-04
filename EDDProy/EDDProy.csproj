@@ -78,6 +78,8 @@
     <Compile Include="Estructuras Lineales\Clases\Nodo.cs" />
     <Compile Include="Estructuras Lineales\Clases\Pilas.cs" />
     <Compile Include="Estructuras No Lineales\Clases\ArbolBusqueda.cs" />
+    <Compile Include="Algoritmos\Busqueda.cs" />
+    <Compile Include="Algoritmos\Ordenamiento.cs" />
     <Compile Include="Estructuras No Lineales\frmArboles.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -1,8 +1,10 @@
 ﻿using EDDemo;
+using EDDemo.Algoritmos;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -25,12 +27,17 @@ namespace EDDemo.Estructuras_No_Lineales
     {
         ArbolBusqueda miArbol;
         NodoBinario miRaiz;
+        Busqueda miBusqueda; 
+        Ordenamiento miOrdenamiento;
 
         public frmArboles()
         {
             InitializeComponent();
             miArbol = new ArbolBusqueda();
             miRaiz = null;
+            miBusqueda = new Busqueda(); 
+            miOrdenamiento = new Ordenamiento();
+            cbOrdenamiento.Items.AddRange(new string[] { "Intercalación", "Shellsort", "Mezcla Natural", "Burbuja", "QuickSort", "Radix", "Mezcla Directa" });
         }
 
         private void btnInsertar_Click(object sender, EventArgs e)
@@ -264,6 +271,116 @@ namespace EDDemo.Estructuras_No_Lineales
             miRaiz = miArbol.RegresaRaiz();
             bool esLleno = miArbol.EsLleno(miRaiz);
             MessageBox.Show(esLleno ? "El árbol es lleno" : "El árbol no es lleno");
+        }
+        //Agregar Busqueda y Ordenamiento
+        private int[] ObtenerArrayDeDatos()
+        {
+            List<int> datos = new List<int>();
+            miArbol.strRecorrido = "";
+            miArbol.InOrden(miRaiz);
+            foreach (string strDato in miArbol.strRecorrido.Split(new string[] { ", " }, StringSplitOptions.RemoveEmptyEntries))
+            {
+                datos.Add(int.Parse(strDato));
+            }
+            return datos.ToArray();
+        }
+
+        private void btnBuscarSecuencial_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtDato.Text))
+            {
+                MessageBox.Show("Por favor, ingrese un valor para buscar.");
+                return;
+            }
+
+            int valor = int.Parse(txtDato.Text);
+            int[] arr = ObtenerArrayDeDatos(); // Método para obtener los datos del árbol en un array
+            int resultado = miBusqueda.Secuencial(arr, valor);
+            MessageBox.Show(resultado != -1 ? $"El {valor} se encuentra en la posición {resultado}" : $"El {valor} no se encuentra en el array");
+        }
+
+        private void btnBuscarBinaria_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtDato.Text))
+            {
+                MessageBox.Show("Por favor, ingrese un valor para buscar.");
+                return;
+            }
+
+            int valor = int.Parse(txtDato.Text);
+            int[] arr = ObtenerArrayDeDatos(); // Método para obtener los datos del árbol en un array
+            Array.Sort(arr); // La búsqueda binaria requiere que el array esté ordenado
+            int resultado = miBusqueda.Binaria(arr, valor);
+            MessageBox.Show(resultado != -1 ? $"El {valor} se encuentra en la posición {resultado}" : $"El {valor} no se encuentra en el array");
+        }
+
+        private void btnBuscarHash_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtDato.Text))
+            {
+                MessageBox.Show("Por favor, ingrese un valor para buscar.");
+                return;
+            }
+
+            int valor = int.Parse(txtDato.Text);
+            int[] arr = ObtenerArrayDeDatos(); // Método para obtener los datos del árbol en un array
+            int resultado = miBusqueda.Hash(arr, valor);
+            MessageBox.Show(resultado != -1 ? $"El {valor} se encuentra en la posición {resultado}" : $"El {valor} no se encuentra en el array");
+        }
+
+        private void btnEjecutarOrdenamiento_Click(object sender, EventArgs e)
+        {
+            if (cbOrdenamiento.SelectedItem == null)
+            {
+                MessageBox.Show("Por favor, seleccione un método de ordenamiento.");
+                return;
+            }
+
+            int[] arrOriginal = ObtenerArrayDeDatos();
+            string metodo = cbOrdenamiento.SelectedItem.ToString();
+            var stopwatch = new Stopwatch();
+
+            int[] arr = new int[arrOriginal.Length];
+            Array.Copy(arrOriginal, arr, arrOriginal.Length);
+
+            stopwatch.Start();
+            switch (metodo)
+            {
+                case "Intercalación":
+                    int[] arr1 = new int[arr.Length / 2];
+                    int[] arr2 = new int[arr.Length - arr1.Length];
+                    Array.Copy(arr, 0, arr1, 0, arr1.Length);
+                    Array.Copy(arr, arr1.Length, arr2, 0, arr2.Length);
+                    int[] resultado = new int[arr.Length];
+                    miOrdenamiento.Intercalacion(arr1, arr2, resultado);
+                    arr = resultado;
+                    break;
+                case "Shellsort":
+                    miOrdenamiento.Shellsort(arr);
+                    break;
+                case "Mezcla Natural":
+                    miOrdenamiento.MezclaNatural(arr);
+                    break;
+                case "Burbuja":
+                    miOrdenamiento.Burbuja(arr);
+                    break;
+                case "QuickSort":
+                    miOrdenamiento.QuickSort(arr, 0, arr.Length - 1);
+                    break;
+                case "Radix":
+                    miOrdenamiento.RadixSort(arr);
+                    break;
+                case "Mezcla Directa":
+                    miOrdenamiento.MezclaDirecta(arr);
+                    break;
+            }
+            stopwatch.Stop();
+
+            long ticks = stopwatch.ElapsedTicks;
+            double timeInMilliseconds = (ticks * 1000.0) / Stopwatch.Frequency;
+
+            string resultadoOrdenamiento = string.Join(", ", arr);
+            MessageBox.Show($"Ordenamiento completado utilizando {metodo}.\n\nResultado: {resultadoOrdenamiento}\n\nTiempo de ejecución: {timeInMilliseconds:F6} ms");
         }
     }
 }

@@ -61,6 +61,13 @@ namespace EDDemo.Estructuras_No_Lineales
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.btnBuscarSecuencial = new System.Windows.Forms.Button();
+            this.btnBuscarBinaria = new System.Windows.Forms.Button();
+            this.btnBuscarHash = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
+            this.cbOrdenamiento = new System.Windows.Forms.ComboBox();
+            this.lblOrdenamiento = new System.Windows.Forms.Label();
+            this.btnEjecutarOrdenamiento = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.txtNodos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -95,14 +102,14 @@ namespace EDDemo.Estructuras_No_Lineales
             this.txtArbol.Multiline = true;
             this.txtArbol.Name = "txtArbol";
             this.txtArbol.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtArbol.Size = new System.Drawing.Size(677, 326);
+            this.txtArbol.Size = new System.Drawing.Size(729, 326);
             this.txtArbol.TabIndex = 2;
             this.txtArbol.TextChanged += new System.EventHandler(this.txtArbol_TextChanged);
             // 
             // btnLimpiar
             // 
             this.btnLimpiar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnLimpiar.Location = new System.Drawing.Point(11, 226);
+            this.btnLimpiar.Location = new System.Drawing.Point(63, 226);
             this.btnLimpiar.Margin = new System.Windows.Forms.Padding(2);
             this.btnLimpiar.Name = "btnLimpiar";
             this.btnLimpiar.Size = new System.Drawing.Size(83, 29);
@@ -114,7 +121,7 @@ namespace EDDemo.Estructuras_No_Lineales
             // btnGrafica
             // 
             this.btnGrafica.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnGrafica.Location = new System.Drawing.Point(11, 195);
+            this.btnGrafica.Location = new System.Drawing.Point(63, 195);
             this.btnGrafica.Margin = new System.Windows.Forms.Padding(2);
             this.btnGrafica.Name = "btnGrafica";
             this.btnGrafica.Size = new System.Drawing.Size(83, 29);
@@ -263,7 +270,7 @@ namespace EDDemo.Estructuras_No_Lineales
             // 
             // btnEliminarArbol
             // 
-            this.btnEliminarArbol.Location = new System.Drawing.Point(308, 201);
+            this.btnEliminarArbol.Location = new System.Drawing.Point(308, 209);
             this.btnEliminarArbol.Name = "btnEliminarArbol";
             this.btnEliminarArbol.Size = new System.Drawing.Size(100, 23);
             this.btnEliminarArbol.TabIndex = 18;
@@ -273,7 +280,7 @@ namespace EDDemo.Estructuras_No_Lineales
             // 
             // btnEliminarPredecesor
             // 
-            this.btnEliminarPredecesor.Location = new System.Drawing.Point(308, 172);
+            this.btnEliminarPredecesor.Location = new System.Drawing.Point(308, 180);
             this.btnEliminarPredecesor.Name = "btnEliminarPredecesor";
             this.btnEliminarPredecesor.Size = new System.Drawing.Size(100, 23);
             this.btnEliminarPredecesor.TabIndex = 19;
@@ -283,7 +290,7 @@ namespace EDDemo.Estructuras_No_Lineales
             // 
             // btnEliminarSucesor
             // 
-            this.btnEliminarSucesor.Location = new System.Drawing.Point(308, 230);
+            this.btnEliminarSucesor.Location = new System.Drawing.Point(308, 238);
             this.btnEliminarSucesor.Name = "btnEliminarSucesor";
             this.btnEliminarSucesor.Size = new System.Drawing.Size(100, 23);
             this.btnEliminarSucesor.TabIndex = 20;
@@ -293,9 +300,9 @@ namespace EDDemo.Estructuras_No_Lineales
             // 
             // btnCantidadNodos
             // 
-            this.btnCantidadNodos.Location = new System.Drawing.Point(488, 138);
+            this.btnCantidadNodos.Location = new System.Drawing.Point(513, 168);
             this.btnCantidadNodos.Name = "btnCantidadNodos";
-            this.btnCantidadNodos.Size = new System.Drawing.Size(112, 23);
+            this.btnCantidadNodos.Size = new System.Drawing.Size(91, 23);
             this.btnCantidadNodos.TabIndex = 21;
             this.btnCantidadNodos.Text = "Nodos";
             this.btnCantidadNodos.UseVisualStyleBackColor = true;
@@ -323,7 +330,7 @@ namespace EDDemo.Estructuras_No_Lineales
             // 
             // btnEsLleno
             // 
-            this.btnEsLleno.Location = new System.Drawing.Point(509, 172);
+            this.btnEsLleno.Location = new System.Drawing.Point(513, 205);
             this.btnEsLleno.Name = "btnEsLleno";
             this.btnEsLleno.Size = new System.Drawing.Size(91, 23);
             this.btnEsLleno.TabIndex = 24;
@@ -333,9 +340,9 @@ namespace EDDemo.Estructuras_No_Lineales
             // 
             // btnCantidadHojas
             // 
-            this.btnCantidadHojas.Location = new System.Drawing.Point(488, 113);
+            this.btnCantidadHojas.Location = new System.Drawing.Point(513, 138);
             this.btnCantidadHojas.Name = "btnCantidadHojas";
-            this.btnCantidadHojas.Size = new System.Drawing.Size(112, 23);
+            this.btnCantidadHojas.Size = new System.Drawing.Size(91, 23);
             this.btnCantidadHojas.TabIndex = 25;
             this.btnCantidadHojas.Text = " Hojas";
             this.btnCantidadHojas.UseVisualStyleBackColor = true;
@@ -343,7 +350,7 @@ namespace EDDemo.Estructuras_No_Lineales
             // 
             // btnEsCompleto
             // 
-            this.btnEsCompleto.Location = new System.Drawing.Point(509, 201);
+            this.btnEsCompleto.Location = new System.Drawing.Point(513, 234);
             this.btnEsCompleto.Name = "btnEsCompleto";
             this.btnEsCompleto.Size = new System.Drawing.Size(91, 23);
             this.btnEsCompleto.TabIndex = 26;
@@ -354,7 +361,7 @@ namespace EDDemo.Estructuras_No_Lineales
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(244, 175);
+            this.label2.Location = new System.Drawing.Point(244, 183);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(58, 16);
             this.label2.TabIndex = 27;
@@ -381,7 +388,7 @@ namespace EDDemo.Estructuras_No_Lineales
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(418, 116);
+            this.label5.Location = new System.Drawing.Point(443, 142);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(64, 16);
             this.label5.TabIndex = 30;
@@ -390,17 +397,90 @@ namespace EDDemo.Estructuras_No_Lineales
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(418, 175);
+            this.label6.Location = new System.Drawing.Point(420, 208);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(87, 16);
             this.label6.TabIndex = 31;
             this.label6.Text = "Arbol Binario:";
             // 
+            // btnBuscarSecuencial
+            // 
+            this.btnBuscarSecuencial.Location = new System.Drawing.Point(619, 91);
+            this.btnBuscarSecuencial.Name = "btnBuscarSecuencial";
+            this.btnBuscarSecuencial.Size = new System.Drawing.Size(91, 23);
+            this.btnBuscarSecuencial.TabIndex = 32;
+            this.btnBuscarSecuencial.Text = "Secuencial";
+            this.btnBuscarSecuencial.UseVisualStyleBackColor = true;
+            this.btnBuscarSecuencial.Click += new System.EventHandler(this.btnBuscarSecuencial_Click);
+            // 
+            // btnBuscarBinaria
+            // 
+            this.btnBuscarBinaria.Location = new System.Drawing.Point(619, 119);
+            this.btnBuscarBinaria.Name = "btnBuscarBinaria";
+            this.btnBuscarBinaria.Size = new System.Drawing.Size(91, 23);
+            this.btnBuscarBinaria.TabIndex = 33;
+            this.btnBuscarBinaria.Text = "Binaria";
+            this.btnBuscarBinaria.UseVisualStyleBackColor = true;
+            this.btnBuscarBinaria.Click += new System.EventHandler(this.btnBuscarBinaria_Click);
+            // 
+            // btnBuscarHash
+            // 
+            this.btnBuscarHash.Location = new System.Drawing.Point(619, 148);
+            this.btnBuscarHash.Name = "btnBuscarHash";
+            this.btnBuscarHash.Size = new System.Drawing.Size(91, 23);
+            this.btnBuscarHash.TabIndex = 34;
+            this.btnBuscarHash.Text = "Hash";
+            this.btnBuscarHash.UseVisualStyleBackColor = true;
+            this.btnBuscarHash.Click += new System.EventHandler(this.btnBuscarHash_Click);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(616, 72);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(72, 16);
+            this.label7.TabIndex = 35;
+            this.label7.Text = "Busqueda:";
+            // 
+            // cbOrdenamiento
+            // 
+            this.cbOrdenamiento.FormattingEnabled = true;
+            this.cbOrdenamiento.Location = new System.Drawing.Point(619, 206);
+            this.cbOrdenamiento.Name = "cbOrdenamiento";
+            this.cbOrdenamiento.Size = new System.Drawing.Size(92, 24);
+            this.cbOrdenamiento.TabIndex = 36;
+            // 
+            // lblOrdenamiento
+            // 
+            this.lblOrdenamiento.AutoSize = true;
+            this.lblOrdenamiento.Location = new System.Drawing.Point(616, 187);
+            this.lblOrdenamiento.Name = "lblOrdenamiento";
+            this.lblOrdenamiento.Size = new System.Drawing.Size(95, 16);
+            this.lblOrdenamiento.TabIndex = 37;
+            this.lblOrdenamiento.Text = "Ordenamiento:";
+            // 
+            // btnEjecutarOrdenamiento
+            // 
+            this.btnEjecutarOrdenamiento.Location = new System.Drawing.Point(619, 236);
+            this.btnEjecutarOrdenamiento.Name = "btnEjecutarOrdenamiento";
+            this.btnEjecutarOrdenamiento.Size = new System.Drawing.Size(92, 23);
+            this.btnEjecutarOrdenamiento.TabIndex = 38;
+            this.btnEjecutarOrdenamiento.Text = "Ejecutar";
+            this.btnEjecutarOrdenamiento.UseVisualStyleBackColor = true;
+            this.btnEjecutarOrdenamiento.Click += new System.EventHandler(this.btnEjecutarOrdenamiento_Click);
+            // 
             // frmArboles
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(685, 620);
+            this.ClientSize = new System.Drawing.Size(737, 620);
+            this.Controls.Add(this.btnEjecutarOrdenamiento);
+            this.Controls.Add(this.lblOrdenamiento);
+            this.Controls.Add(this.cbOrdenamiento);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.btnBuscarHash);
+            this.Controls.Add(this.btnBuscarBinaria);
+            this.Controls.Add(this.btnBuscarSecuencial);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -476,5 +556,12 @@ namespace EDDemo.Estructuras_No_Lineales
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button btnBuscarSecuencial;
+        private System.Windows.Forms.Button btnBuscarBinaria;
+        private System.Windows.Forms.Button btnBuscarHash;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.ComboBox cbOrdenamiento;
+        private System.Windows.Forms.Label lblOrdenamiento;
+        private System.Windows.Forms.Button btnEjecutarOrdenamiento;
     }
 }
